@@ -1,0 +1,38 @@
+create database Week5
+create table Book(
+BookId nvarchar(20),BookName varchar(20),
+Author varchar(20),
+Publisher nvarchar(20),Price decimal
+)
+create table Bookk(
+BookId int,BookName varchar(20),
+Author varchar(20),
+Publisher nvarchar(20),Price decimal
+)
+create procedure InsertIntoBook
+@BookId varchar,
+@BookName varchar(40),
+@Author nvarchar(40),
+@Publisher nvarchar(40), @Price decimal
+as begin
+insert into Bookk values(@BookId,@BookName,@Author,@Publisher,@Price)
+end
+create procedure BookDetails
+as
+select * from Bookk
+
+
+
+create procedure UpdateBook
+@BookId int,@BookName varchar(20),
+@Author varchar(20),
+@Publisher nvarchar(20),@Price decimal
+as begin
+update Bookk set BookName = @BookName,Author = @Author,Publisher= @Publisher where BookId = @BookId
+end
+
+create procedure DeleteBook
+@BookId varchar(40)
+as begin
+delete from Bookk where @BookId = BookId
+end
